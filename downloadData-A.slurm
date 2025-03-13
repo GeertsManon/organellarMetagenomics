@@ -12,11 +12,11 @@
 # Downloading Data from NCBI SRA
 # ==============================
 #
-#	1. Download raw sequencing data in its native .sra format (single core)
-#	2. Launch script to retrieve .sra files and store them locally (multiple cores)
-#	3. Launch script for trimming reads (multiple cores)
+#	  1. Download raw sequencing data in its native .sra format (single core)
+#	  2. Launch script to retrieve .sra files and store them locally (multiple cores)
+#	  3. Launch script for trimming reads (multiple cores)
 #
-#	HOWTO: sbatch --array=1 scripts/downloadData-A.slurm
+#  	HOWTO: sbatch --array=1 scripts/downloadData-A.slurm
 #
 ############################################
 
@@ -33,8 +33,8 @@ module load SRA-Toolkit
 
 
 LOG_DATE=$(date +%Y%m%d)
-export SLURM_OUTPUT="/scratch/leuven/347/vsc34774/Diatoms/${LOG_DATE}_${SLURM_JOB_NAME}_${SLURM_ARRAY_TASK_ID}.out"
-export SLURM_ERROR="/scratch/leuven/347/vsc34774/Diatoms/${LOG_DATE}_${SLURM_JOB_NAME}_${SLURM_ARRAY_TASK_ID}.err"
+export SLURM_OUTPUT="${LOG_DATE}_${SLURM_JOB_NAME}_${SLURM_ARRAY_TASK_ID}.out"
+export SLURM_ERROR="${LOG_DATE}_${SLURM_JOB_NAME}_${SLURM_ARRAY_TASK_ID}.err"
 exec > "$SLURM_OUTPUT" 2>> "$SLURM_ERROR"
 
 CONFIG=samples
