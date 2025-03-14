@@ -20,13 +20,16 @@
 #	HOWTO: sbatch --array=1 scripts/downloadData-A.slurm
 #
 #	POST script: 
-#		cat 2_TrimmedData/*R1_paired* > 3_ConcatenatedData/AveRiv_R1_paired.fastq.gz
-#		cat 2_TrimmedData/*R2_paired* > 3_ConcatenatedData/AveRiv_R2_paired.fastq.gz
+#		cat 2_TrimmedData/*R1_paired* > 2_TrimmedData/AveRiv_R1_paired.fastq.gz
+#		cat 2_TrimmedData/*R2_paired* > 2_TrimmedData/AveRiv_R2_paired.fastq.gz
+#
+#		mv 2_TrimmedData/15_SRR10955151_R1_paired.fastq.gz > 2_TrimmedData/LakeMan_R1_paired.fastq.gz
+#		mv 2_TrimmedData/15_SRR10955151_R2_paired.fastq.gz > 2_TrimmedData/LakeMan_R2_paired.fastq.gz
+#
+#		mv 2_TrimmedData/16_ERR9631049_R1_paired.fastq.gz > 2_TrimmedData/ResCRep_R1_paired.fastq.gz
+#		mv 2_TrimmedData/16_ERR9631049_R2_paired.fastq.gz > 2_TrimmedData/ResCRep_R2_paired.fastq.gz
 #		
 ############################################
-
-
-cd /scratch/leuven/347/vsc34774/Diatoms
 
 
 ###########	1	Download modules
@@ -41,8 +44,8 @@ module load FastQC
 
 
 LOG_DATE=$(date +%Y%m%d)
-export SLURM_OUTPUT="/scratch/leuven/347/vsc34774/Diatoms/${LOG_DATE}_${SLURM_JOB_NAME}_${SLURM_ARRAY_TASK_ID}.out"
-export SLURM_ERROR="/scratch/leuven/347/vsc34774/Diatoms/${LOG_DATE}_${SLURM_JOB_NAME}_${SLURM_ARRAY_TASK_ID}.err"
+export SLURM_OUTPUT="${LOG_DATE}_${SLURM_JOB_NAME}_${SLURM_ARRAY_TASK_ID}.out"
+export SLURM_ERROR="${LOG_DATE}_${SLURM_JOB_NAME}_${SLURM_ARRAY_TASK_ID}.err"
 exec > "$SLURM_OUTPUT" 2> "$SLURM_ERROR"
 
 
@@ -51,9 +54,6 @@ SRR=$(awk -v ID=$SLURM_ARRAY_TASK_ID '$1==ID {print $2}' $CONFIG)
 READS1=1_RawData/$SLURM_ARRAY_TASK_ID'_'$SRR'_'R1.fastq.gz
 READS2=1_RawData/$SLURM_ARRAY_TASK_ID'_'$SRR'_'R2.fastq.gz
 RESULTS_FILE=2_TrimmedData/results.log
-
-[ -d $STAGING/Diatoms/3_ConcatenatedData ] || mkdir $STAGING/Diatoms/3_ConcatenatedData
-[ -d 3_ConcatenatedData ] || mkdir 3_ConcatenatedData
 
 
 ###########     3       Launch command
