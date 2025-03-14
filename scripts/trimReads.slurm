@@ -20,10 +20,9 @@
 #	HOWTO: sbatch --array=1 scripts/downloadData-A.slurm
 #
 #	POST script: 
-#		cat 2_TrimmedData/*R1_paired* > $STAGING/Diatoms/3_ConcatenatedData/ALL_R1_paired.fastq.gz
-#		cat 2_TrimmedData/*R2_paired* > $STAGING/Diatoms/3_ConcatenatedData/ALL_R2_paired.fastq.gz
-#		ln -s $STAGING/Diatoms/3_ConcatenatedData/* 3_ConcatenatedData/
-#
+#		cat 2_TrimmedData/*R1_paired* > 3_ConcatenatedData/AveRiv_R1_paired.fastq.gz
+#		cat 2_TrimmedData/*R2_paired* > 3_ConcatenatedData/AveRiv_R2_paired.fastq.gz
+#		
 ############################################
 
 
