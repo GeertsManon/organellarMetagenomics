@@ -51,14 +51,14 @@ SRR=$(awk -v ID=$SLURM_ARRAY_TASK_ID '$1==ID {print $2}' $CONFIG)
 ###########     3       Launch command
 
 
-echo '>>>>>>>   Downloading data for $SRR...   <<<<<<<'
+echo ">>>>>>>   Downloading data for $SRR...   <<<<<<<"
 fasterq-dump $SRR -O 1_RawData -o $SLURM_ARRAY_TASK_ID"_"$SRR \
 	--threads $SLURM_NTASKS_PER_NODE --progress
 
 mv 1_RawData/$SLURM_ARRAY_TASK_ID"_"$SRR"_1.fastq" 1_RawData/$SLURM_ARRAY_TASK_ID"_"$SRR"_R1.fastq"
 mv 1_RawData/$SLURM_ARRAY_TASK_ID"_"$SRR"_2.fastq" 1_RawData/$SLURM_ARRAY_TASK_ID"_"$SRR"_R2.fastq"
 
-echo '>>>>>>>   gzipping fastq files...   <<<<<<<'
+echo ">>>>>>>   gzipping fastq files...   <<<<<<<"
 pigz -c -p $SLURM_NTASKS_PER_NODE -v 1_RawData/$SLURM_ARRAY_TASK_ID"_"$SRR"_R1.fastq" > 1_RawData/$SLURM_ARRAY_TASK_ID"_"$SRR"_R1.fastq.gz"
 pigz -c -p $SLURM_NTASKS_PER_NODE -v 1_RawData/$SLURM_ARRAY_TASK_ID"_"$SRR"_R2.fastq" > 1_RawData/$SLURM_ARRAY_TASK_ID"_"$SRR"_R2.fastq.gz"
 
@@ -74,7 +74,7 @@ fi
 ###########     4       Results
 
 
-echo '>>>>>>>   Calculating and writing result for $SRR...   <<<<<<<'
+echo ">>>>>>>   Calculating and writing result for $SRR...   <<<<<<<"
 # Extract the number of reads read and written from the SLURM_ERROR file using awk
 READS_READ=$(awk '/reads read/ {print $NF}' "$SLURM_ERROR")
 READS_WRITTEN=$(awk '/reads written/ {print $NF}' "$SLURM_ERROR")
@@ -106,5 +106,5 @@ fi
 ###########     5	Launch trimming
 
 
-echo '>>>>>>>   Launched trimReads.slurm   <<<<<<<'
+echo ">>>>>>>   Launched trimReads.slurm   <<<<<<<"
 sbatch --array=$SLURM_ARRAY_TASK_ID scripts/trimReads.slurm
