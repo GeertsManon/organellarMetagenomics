@@ -41,7 +41,7 @@ export SLURM_ERROR="${LOG_DATE}_${SLURM_JOB_NAME}_${SLURM_ARRAY_TASK_ID}.err"
 exec > "$SLURM_OUTPUT" 2> "$SLURM_ERROR"
 
 
-CONFIG=samples
+CONFIG=datasets.txt
 SRR=$(awk -v ID=$SLURM_ARRAY_TASK_ID '$1==ID {print $2}' $CONFIG)
 
 [ -d 2_TrimmedData ] || mkdir 2_TrimmedData
