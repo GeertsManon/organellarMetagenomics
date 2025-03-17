@@ -59,10 +59,10 @@ RESULTS_FILE=2_TrimmedData/results.log
 ###########     3       Launch command
 
 
-echo '>>>>>>>   Visualising raw reads...   <<<<<<<'
+echo ">>>>>>>   Visualising raw reads...   <<<<<<<"
 fastqc --threads $SLURM_CPUS_PER_TASK $READS1 $READS2
 
-echo '>>>>>>>   Trimming reads...   <<<<<<<'
+echo ">>>>>>>   Trimming reads...   <<<<<<<"
 java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar PE \
 	-threads $SLURM_CPUS_PER_TASK \
 	-phred33 \
@@ -72,7 +72,7 @@ java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar PE \
 	ILLUMINACLIP:adapters.fasta:2:30:10 \
 	LEADING:3 TRAILING:3 SLIDINGWINDOW:4:20 MINLEN:50
 
-echo '>>>>>>>   Visualising trimmed reads...   <<<<<<<'
+echo ">>>>>>>   Visualising trimmed reads...   <<<<<<<"
 fastqc --threads $SLURM_CPUS_PER_TASK  2_TrimmedData/$SLURM_ARRAY_TASK_ID'_'$SRR'_R1_paired.fastq.gz' \
 	2_TrimmedData/$SLURM_ARRAY_TASK_ID'_'$SRR'_R2_paired.fastq.gz'
 
