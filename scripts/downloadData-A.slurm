@@ -46,12 +46,12 @@ SRR=$(awk -v ID=$SLURM_ARRAY_TASK_ID '$1==ID {print $2}' $CONFIG)
 ###########     3	 Launch command (single core)
 
 
-echo '>>>>>>>   Prefetching $SRR...   <<<<<<<'
+echo ">>>>>>>   Prefetching $SRR...   <<<<<<<"
 prefetch $SRR --progress yes -O 1_RawData
 
 
 ###########     4       Launch fastq-dump (multiple cores)
 
 
-echo '>>>>>>>   Launched downloadData-B.slurm   <<<<<<<'
+echo ">>>>>>>   Launched downloadData-B.slurm   <<<<<<<"
 sbatch --array=$SLURM_ARRAY_TASK_ID scripts/downloadData-B.slurm
