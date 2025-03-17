@@ -1,4 +1,4 @@
-# OrganellarMetagenomics
+# organellarMetagenomics
 
 A bioinformatics pipeline designed for the recovery of complete organellar genomes from metagenomic data. This workflow efficiently extracts high-quality organellar genomes from environmental DNA (short-read sequencing), uncovering previously hidden eukaryotic diversity.
 
