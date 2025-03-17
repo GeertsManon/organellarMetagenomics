@@ -87,9 +87,10 @@ fi
 
 if grep -q -P "^$SLURM_ARRAY_TASK_ID\t" 1_RawData/results.log; then
     # Update the existing line if ID is found
-    awk -v ID="$SLURM_ARRAY_TASK_ID" -v READS_READ="$READS_READ" -v READS_WRITTEN="$READS_WRITTEN" '
+    awk -v ID="$SLURM_ARRAY_TASK_ID" -v SRR="$SRR" -v READS_READ="$READS_READ" -v READS_WRITTEN="$READS_WRITTEN" '
         BEGIN { FS=OFS="\t" }
         $1 == ID {
+            $2 = SRR;
             $3 = READS_READ;
             $4 = READS_WRITTEN;
         }
@@ -99,6 +100,7 @@ else
     # Append a new line if ID is not found
     echo -e "$SLURM_ARRAY_TASK_ID\t$SRR\t$READS_READ\t$READS_WRITTEN" >> 1_RawData/results.log
 fi
+
 
 
 
