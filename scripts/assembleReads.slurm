@@ -41,8 +41,8 @@ conda activate GetOrganelle
 
 
 LOG_DATE=$(date +%Y%m%d)
-export SLURM_OUTPUT="${LOG_DATE}_${SLURM_JOB_NAME}.out"
-export SLURM_ERROR="${LOG_DATE}_${SLURM_JOB_NAME}.err"
+export SLURM_OUTPUT="${LOG_DATE}_${SLURM_JOB_NAME}_${SAMPLE}.out"
+export SLURM_ERROR="${LOG_DATE}_${SLURM_JOB_NAME}_${SAMPLE}.err"
 exec > "$SLURM_OUTPUT" 2>> "$SLURM_ERROR"
 
 if [ -z "$SAMPLE" ]; then
