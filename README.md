@@ -6,7 +6,7 @@ A bioinformatics pipeline for recovering complete organellar genomes from metage
 
 - Data download from NCBI SRA using SRA-Toolkit
 - Quality trimming with Trimmomatic
-- _De novo_ assembly with GetOrganelle
+- _De novo_ assembly with [GetOrganelle](https://github.com/Kinggerm/GetOrganelle)
 - Quality assessment through 1) mapping with SMALT and SAMtools and 2) variant calling with BCFtools
 
 For detailed instructions on how to use this pipeline, please refer to my Wiki pages:
