@@ -35,14 +35,13 @@ module load SRA-Toolkit
 ###########     2       Set Variables
 
 
-LOG_DATE=$(date +%Y%m%d)
-export SLURM_OUTPUT="${LOG_DATE}_${SLURM_JOB_NAME}_${SLURM_ARRAY_TASK_ID}.out"
-export SLURM_ERROR="${LOG_DATE}_${SLURM_JOB_NAME}_${SLURM_ARRAY_TASK_ID}.err"
-exec > "$SLURM_OUTPUT" 2> "$SLURM_ERROR"
-
-
 CONFIG=datasets.txt
 SRR=$(awk -v ID=$SLURM_ARRAY_TASK_ID '$1==ID {print $2}' $CONFIG)
+
+LOG_DATE=$(date +%Y%m%d)
+export SLURM_OUTPUT="${LOG_DATE}_${SRR}_${SLURM_ARRAY_TASK_ID}.out"
+export SLURM_ERROR="${LOG_DATE}_${SRR}_${SLURM_ARRAY_TASK_ID}.err"
+exec >> "$SLURM_OUTPUT" 2>> "$SLURM_ERROR"
 
 [ -d 2_TrimmedData ] || mkdir 2_TrimmedData
 
