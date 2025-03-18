@@ -50,8 +50,8 @@ READS2=1_RawData/$SLURM_ARRAY_TASK_ID'_'$SRR'_'R2.fastq.gz
 RESULTS_FILE=2_TrimmedData/results.log
 
 LOG_DATE=$(date +%Y%m%d)
-export SLURM_OUTPUT="${LOG_DATE}_${SRR}_${SLURM_ARRAY_TASK_ID}.out"
-export SLURM_ERROR="${LOG_DATE}_${SRR}_${SLURM_ARRAY_TASK_ID}.err"
+export SLURM_OUTPUT="${LOG_DATE}_${SLURM_ARRAY_TASK_ID}_${SRR}.out"
+export SLURM_ERROR="${LOG_DATE}_${SLURM_ARRAY_TASK_ID}_${SRR}.err"
 exec >> "$SLURM_OUTPUT" 2>> "$SLURM_ERROR
 
 
