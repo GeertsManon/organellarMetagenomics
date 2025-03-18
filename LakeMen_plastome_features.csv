@@ -1,0 +1,5 @@
+Name,Sequence Name,Type,Minimum,Maximum,Length,Direction
+large single copy (LSC),SRR1095515,misc_feature,1,65337,65337,forward
+small single copy (SSC),SRR1095515,misc_feature,83942,110949,27008,forward
+inverted repeat A (IRA) repeat region,SRR1095515,repeat_region,65338,83941,18604,forward
+inverted repeat B (IRB) repeat region,SRR1095515,repeat_region,110950,129553,18604,reverse

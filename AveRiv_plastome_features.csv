@@ -1,0 +1,5 @@
+Name,Sequence Name,Type,Minimum,Maximum,Length,Direction
+large single copy (LSC),AveRiver,misc_feature,1,64686,64686,forward
+small single copy (SSC),AveRiver,misc_feature,85802,112751,26950,forward
+inverted repeat A (IRA) repeat region,AveRiver,repeat_region,64687,85801,21115,forward
+inverted repeat B (IRB) repeat region,AveRiver,repeat_region,112752,133866,21115,reverse
