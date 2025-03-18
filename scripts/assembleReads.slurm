@@ -56,6 +56,9 @@ READS2=2_TrimmedData/${SAMPLE}_R2_paired.fastq.gz
 
 [ -d 3_Assembly ] || mkdir 3_Assembly
 [ -d $DIR ] || mkdir $DIR
+[ -d 4_QualityAssembly ] || mkdir 4_QualityAssembly
+[ -d 4_QualityAssembly$SAMPLE ] || mkdir 4_QualityAssembly/$SAMPLE
+
 
 
 ###########     3	Launch command
