@@ -36,8 +36,8 @@ CONFIG=datasets.txt
 SRR=$(awk -v ID=$SLURM_ARRAY_TASK_ID '$1==ID {print $2}' $CONFIG)
 
 LOG_DATE=$(date +%Y%m%d)
-export SLURM_OUTPUT="${LOG_DATE}_${SRR}_${SLURM_ARRAY_TASK_ID}.out"
-export SLURM_ERROR="${LOG_DATE}_${SRR}_${SLURM_ARRAY_TASK_ID}.err"
+export SLURM_OUTPUT="${LOG_DATE}_${SLURM_ARRAY_TASK_ID}_${SRR}.out"
+export SLURM_ERROR="${LOG_DATE}_${SLURM_ARRAY_TASK_ID}_${SRR}.err"
 exec > "$SLURM_OUTPUT" 2> "$SLURM_ERROR"
 
 [ -d 1_RawData ] || mkdir 1_RawData
