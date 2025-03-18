@@ -80,7 +80,7 @@ fastqc --threads $SLURM_CPUS_PER_TASK  2_TrimmedData/$SLURM_ARRAY_TASK_ID'_'$SRR
 ###########     4       Results
 
 
-echo '>>>>>>>   Calculating and writing result for $SRR...   <<<<<<<'
+echo ">>>>>>>   Writing result for $SRR...   <<<<<<<"
 INPUT_PAIRS=$(grep -oP "Input Read Pairs: \K\d+" "$SLURM_ERROR")
 BOTH_SURVIVING=$(grep -oP "Both Surviving: \K\d+" "$SLURM_ERROR")
 FORWARD_ONLY=$(grep -oP "Forward Only Surviving: \K\d+" "$SLURM_ERROR")
