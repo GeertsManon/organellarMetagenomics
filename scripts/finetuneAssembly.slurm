@@ -86,7 +86,7 @@ fi
 
 echo ">>>>>>>   Assembling data for $SAMPLE...   <<<<<<<"
 get_organelle_from_reads.py -1 $READS1 -2 $READS2 \
-	-o $DIR --overwrite -t 32 --memory-save \
+	-o $DIR --overwrite -t $SLURM_NTASKS_PER_NODE --memory-save \
 	-s $SEED --genes $LABEL -F other_pt \
 	-k $KMER ${R:+-R $R} ${WS:+-w $WS} \
 	--reduce-reads-for-coverage inf \
