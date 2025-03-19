@@ -68,7 +68,7 @@ echo ">>>>>>>   Assembling data for $SAMPLE...   <<<<<<<"
 get_organelle_from_reads.py -1 $READS1 -2 $READS2 \
 	-o $DIR --overwrite -R 40 \
 	-k 21,33,55,77,99,127 \
-	-F other_pt --memory-save -t 32  2>> "$SLURM_ERROR"
+	-F other_pt --memory-save -t $SLURM_NTASKS_PER_NODE  2>> "$SLURM_ERROR"
 
 
 conda deactivate
