@@ -1,7 +1,8 @@
 #!/bin/bash
 
 #SBATCH --cluster=wice
-#SBATCH --cpus-per-task=16
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=32
 #SBATCH --time=5:00:00
 #SBATCH -A l_fishgenomics_at_kul
 #SBATCH -J trimmomatic
@@ -59,11 +60,11 @@ exec >> "$SLURM_OUTPUT" 2>> "$SLURM_ERROR"
 
 
 echo ">>>>>>>   Visualising raw reads...   <<<<<<<"
-fastqc --threads $SLURM_CPUS_PER_TASK $READS1 $READS2
+fastqc --threads $SLURM_NTASKS_PER_NODE $READS1 $READS2
 
 echo ">>>>>>>   Trimming reads...   <<<<<<<"
 java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar PE \
-	-threads $SLURM_CPUS_PER_TASK \
+	-threads $SLURM_NTASKS_PER_NODE \
 	-phred33 \
 	$READS1 $READS2 \
 	2_TrimmedData/$SLURM_ARRAY_TASK_ID'_'$SRR'_R1_paired.fastq.gz' 2_TrimmedData/$SLURM_ARRAY_TASK_ID'_'$SRR'_R1_unpaired.fastq.gz' \
@@ -72,7 +73,7 @@ java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar PE \
 	LEADING:3 TRAILING:3 SLIDINGWINDOW:4:20 MINLEN:50
 
 echo ">>>>>>>   Visualising trimmed reads...   <<<<<<<"
-fastqc --threads $SLURM_CPUS_PER_TASK  2_TrimmedData/$SLURM_ARRAY_TASK_ID'_'$SRR'_R1_paired.fastq.gz' \
+fastqc --threads $SLURM_NTASKS_PER_NODE  2_TrimmedData/$SLURM_ARRAY_TASK_ID'_'$SRR'_R1_paired.fastq.gz' \
 	2_TrimmedData/$SLURM_ARRAY_TASK_ID'_'$SRR'_R2_paired.fastq.gz'
 
 
