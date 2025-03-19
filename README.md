@@ -1,12 +1,12 @@
 # organellarMetagenomics
 
-A comprehensive bioinformatic toolkit for extracting and analyzing complete organellar genomes from metagenomic datasets. This workflow enables the recovery of high-quality mitochondrial and plastid genomes from environmental DNA, revealing hidden eukaryotic diversity that traditional metagenomic approaches often miss.
+A bioinformatic toolkit for extracting and analyzing complete organellar genomes from metagenomic datasets. This workflow enables the recovery of high-quality mitochondrial and plastid genomes from environmental DNA, revealing hidden eukaryotic diversity that traditional metagenomic approaches often miss.
 
 ## Key Features
 
 - Targeted _de novo_ assembly of organellar sequences from complex metagenomic data
 - Improved assembly using a graph-based approach for resolving organellar genome structures
-- Robust quality assessment and validation protocols
+- Quality assessment of assembly and manual disentanglement of assembly graphs
 - Support for both high and low abundance taxa
 - Taxonomic identification through multi-faceted analysis
 
