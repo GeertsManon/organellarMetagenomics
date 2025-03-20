@@ -28,7 +28,6 @@ module purge
 module load cluster/wice/batch
 module load SPAdes
 module load BLAST+
-module load Python
 
 source /data/leuven/347/vsc34774/miniconda3/etc/profile.d/conda.sh
 conda activate GetOrganelle
