@@ -5,7 +5,7 @@ A bioinformatic toolkit for extracting and analyzing complete organellar genomes
 ## Key Features
 
 - Targeted _de novo_ assembly of organellar sequences from complex metagenomic data
-- Improved assembly using a graph-based approach for resolving organellar genome structures
+- Improved assembly using a assembly graph information
 - Quality assessment of assembly and manual disentanglement of assembly graphs
 - Support for both high and low abundance taxa
 - Taxonomic identification through multi-faceted analysis
