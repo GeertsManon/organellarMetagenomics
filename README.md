@@ -26,6 +26,5 @@ The toolkit includes [scripts](https://github.com/GeertsManon/organellarMetageno
 * High-throughput data acquisition from NCBI SRA
 * Quality control and adapter trimming
 * Targeted _de novo_ assembly with optimized parameters
-* Assembly graph visualization and disentanglement
 * Quality assessment through read mapping, coverage analysis and variant calling
 * Circular genome visualization
