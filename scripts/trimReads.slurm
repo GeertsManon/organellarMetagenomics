@@ -21,14 +21,14 @@
 #	HOWTO: sbatch --array=1 scripts/downloadData-A.slurm
 #
 #	POST script: 
-#		cat 2_TrimmedData/*R1_paired* > 2_TrimmedData/AveRiv_R1_paired.fastq.gz
-#		cat 2_TrimmedData/*R2_paired* > 2_TrimmedData/AveRiv_R2_paired.fastq.gz
+#		cat 2_TrimmedData/*ERR79*R1_paired* > 2_TrimmedData/AveRiv_R1_paired.fastq.gz
+#		cat 2_TrimmedData/*ERR79*R2_paired* > 2_TrimmedData/AveRiv_R2_paired.fastq.gz
 #
-#		mv 2_TrimmedData/15_SRR10955151_R1_paired.fastq.gz > 2_TrimmedData/LakeMan_R1_paired.fastq.gz
-#		mv 2_TrimmedData/15_SRR10955151_R2_paired.fastq.gz > 2_TrimmedData/LakeMan_R2_paired.fastq.gz
+#		mv 2_TrimmedData/15_SRR10955151_R1_paired.fastq.gz 2_TrimmedData/LakeMen_R1_paired.fastq.gz
+#		mv 2_TrimmedData/15_SRR10955151_R2_paired.fastq.gz 2_TrimmedData/LakeMen_R2_paired.fastq.gz
 #
-#		mv 2_TrimmedData/16_ERR9631049_R1_paired.fastq.gz > 2_TrimmedData/ResCRep_R1_paired.fastq.gz
-#		mv 2_TrimmedData/16_ERR9631049_R2_paired.fastq.gz > 2_TrimmedData/ResCRep_R2_paired.fastq.gz
+#		mv 2_TrimmedData/16_ERR9631049_R1_paired.fastq.gz 2_TrimmedData/ResCRep_R1_paired.fastq.gz
+#		mv 2_TrimmedData/16_ERR9631049_R2_paired.fastq.gz 2_TrimmedData/ResCRep_R2_paired.fastq.gz
 #		
 ############################################
 
@@ -36,7 +36,7 @@
 ###########	1	Download modules
 
 module purge
-module load cluster/wice/oldhierarchy
+module load cluster/genius/login
 module load Trimmomatic
 module load FastQC
 
